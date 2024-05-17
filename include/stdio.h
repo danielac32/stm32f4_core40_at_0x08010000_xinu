@@ -28,8 +28,11 @@
 #include <stdarg.h>
 #include <string.h>
 #include <kernel.h>
+#include <process.h>
 
-
+#define stdin ((proctab[currpid]).prdesc[0])
+#define stdout  ((proctab[currpid]).prdesc[1])
+#define stderr  ((proctab[currpid]).prdesc[2])
 
 extern uint32 kprintf(const char *, ...);
 extern void    kpanic (
@@ -44,15 +47,6 @@ int32 sprintf(
       ...
     );
 
-
-int32 sprintf2(
-      char      *str,       /* output string        */
-      char      *fmt,       /* format string        */
-      ...
-    );
-
-
 extern  int32   printf(const char *, ...);
 extern void hexDump(uint32 offset, void *addr, int len);
-extern void hexDump2(uint32 offset, void *addr, int len);
 #endif

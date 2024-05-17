@@ -11,6 +11,8 @@ typedef unsigned long	DWORD;	/* 32-bit unsigned integer */
 typedef unsigned long 	dword;
 typedef unsigned short	word;	/* 16-bit unsigned integer */
 typedef BYTE	DSTATUS;
+
+
 //typedef unsigned long uintptr_t;
 
 /* Function declaration return types */
@@ -81,7 +83,7 @@ typedef	int32	uid32;		/* ID for UDP table descriptor		*/
 typedef int32	devcall;	/* device call declaration		*/
 typedef int32	shellcmd;	/* shell command declaration		*/
 typedef int32	process;	/* top-level function of a process	*/
-typedef	void	interrupt;	/* interrupt procedure			*/
+//typedef	void	interrupt;	/* interrupt procedure			*/
 //typedef	int32	status;		/* returned status value (OK/SYSERR)	*/
 
 

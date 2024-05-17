@@ -31,8 +31,8 @@ GPIOOBJ         = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(notdir $(basename $(
 SRCUSB         = $(wildcard usb/Src/*.c) $(wildcard usb/msc/*.c) $(wildcard usb/cdc/*.c)
 USBOBJ         = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(notdir $(basename $(SRCUSB)))))
 
-SRCKERNEL         = #$(wildcard kernel/Src/*.c)
-kERNELOBJ         = #$(addprefix $(OBJDIR)/, $(addsuffix .o, $(notdir $(basename $(SRCKERNEL)))))
+SRCKERNEL         = $(wildcard kernel/Src/*.c)
+kERNELOBJ         = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(notdir $(basename $(SRCKERNEL)))))
 
 SRCSPI         = $(wildcard spi/Src/*.c)
 SPIOBJ         = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(notdir $(basename $(SRCSPI)))))

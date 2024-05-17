@@ -237,7 +237,7 @@ void Reset_Handler(void) {
     //SPI_Flash_Init();
     //kprintf("spiflash : %x\n",SPI_FLASH_TYPE);
     //syscall_init(&syscallp);
-    meminit();
+    //meminit();
     RCC->AHB2ENR |= RCC_AHB2ENR_OTGFSEN;
     _BST(GPIOA->AFR[1], (0x0A << 12) | (0x0A << 16));
     _BMD(GPIOA->MODER, (0x03 << 22) | (0x03 << 24), (0x02 << 22) | (0x02 << 24));

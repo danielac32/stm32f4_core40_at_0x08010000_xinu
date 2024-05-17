@@ -17,25 +17,29 @@
 #include <flash.h>
 #include <usb_cdc_conf.h>
 
+#include <queue.h>
+#include <resched.h>
+#include <semaphore.h>
+
+
 extern uint32_t SystemCoreClock;
 extern void check_msc();
 syscall_t syscallp;
 
+struct  procent proctab[NPROC]; /* Process table      */
+struct  sentry  semtab[NSEM]; /* Semaphore table      */
 
-void toggle(int m){
-  for (int i = 0; i < m*2; ++i)
-  {
-    hw_toggle_pin(GPIOx(GPIO_C),13);
-    delay(300);
-  }
-  hw_set_pin(GPIOx(GPIO_C),13, 1);
-}
+
+/* Active system status */
+
+int prcount;    /* Total number of live processes */
+pid32 currpid;    /* ID of currently executing process  */
+
 
 
 int main()
 {
-    
-    
+
     hw_cfg_pin(GPIOx(GPIO_C),13,GPIOCFG_MODE_OUT | GPIOCFG_OSPEED_VHIGH  | GPIOCFG_OTYPE_PUPD | GPIOCFG_PUPD_PUP);
     hw_cfg_pin(GPIOx(GPIO_A),0,GPIOCFG_MODE_INP | GPIOCFG_OSPEED_VHIGH  | GPIOCFG_OTYPE_OPEN | GPIOCFG_PUPD_PUP);
     hw_set_pin(GPIOx(GPIO_C),13, 0);
